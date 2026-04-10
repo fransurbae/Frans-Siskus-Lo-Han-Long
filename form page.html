@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Transaksi</title>
+  <style>
+    body{font-family:Arial,sans-serif;max-width:800px;margin:40px auto;padding:0 16px;line-height:1.5;background:#f7f7f7;color:#222}
+    .card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+    h1{margin-top:0}
+    .field{margin-bottom:16px}
+    label{display:block;font-weight:600;margin-bottom:6px}
+    input, select, textarea{width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:8px;font-size:14px;box-sizing:border-box}
+    textarea{min-height:90px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .radio-group{display:flex;gap:16px;flex-wrap:wrap}
+    .radio-group label{font-weight:400;display:flex;align-items:center;gap:6px;margin:0}
+    button{background:#0d6efd;color:#fff;border:none;padding:12px 18px;border-radius:8px;font-size:15px;cursor:pointer}
+    button:hover{background:#0b5ed7}
+    small{color:#666}
+    @media (max-width:640px){.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Form Data Transaksi</h1>
+    <form action="#" method="post">
+      <div class="field">
+        <label for="nama">Nama</label>
+        <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="ttl">Tempat Tanggal Lahir</label>
+          <input type="text" id="ttl" name="ttl" placeholder="Contoh: Banjarmasin, 11 April 2000" required>
+        </div>
+        <div class="field">
+          <label>Jenis Kelamin</label>
+          <div class="radio-group">
+            <label><input type="radio" name="jenis_kelamin" value="Laki-laki" required> Laki-laki</label>
+            <label><input type="radio" name="jenis_kelamin" value="Perempuan"> Perempuan</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="telepon">Nomor Telepon</label>
+          <input type="tel" id="telepon" name="telepon" placeholder="08xxxxxxxxxx" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="nama@email.com" required>
+        </div>
+      </div>
+
+      <h2>Data Bank</h2>
+      <div class="row">
+        <div class="field">
+          <label for="bank">Bank yang digunakan untuk bertransaksi</label>
+          <input type="text" id="bank" name="bank" placeholder="Contoh: BCA, BRI, Mandiri" required>
+        </div>
+        <div class="field">
+          <label for="rekening">Nomor Rekening</label>
+          <input type="text" id="rekening" name="rekening" placeholder="Masukkan nomor rekening" required>
+        </div>
+      </div>
+
+      <h2>Data Transaksi</h2>
+      <div class="row">
+        <div class="field">
+          <label for="nominal">Nominal Transaksi</label>
+          <input type="number" id="nominal" name="nominal" min="0" step="1" placeholder="Masukkan jumlah transaksi" required>
+          <small>Isi dengan jumlah pengeluaran atau pemasukan.</small>
+        </div>
+        <div class="field">
+          <label for="tipe_transaksi">Transaksi yang dilakukan</label>
+          <select id="tipe_transaksi" name="tipe_transaksi" required>
+            <option value="">Pilih transaksi</option>
+            <option value="Pemasukan">Pemasukan</option>
+            <option value="Pengeluaran">Pengeluaran</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="keterangan">Keterangan Tambahan</label>
+        <textarea id="keterangan" name="keterangan" placeholder="Tuliskan detail transaksi jika diperlukan"></textarea>
+      </div>
+
+      <button type="submit">Kirim</button>
+    </form>
+  </div>
+</body>
+</html>
