@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Form Data Transaksi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    a {
+      padding: 10px 15px;
+      text-decoration: none;
+      margin-right: 10px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .btn-back {
+      background-color: #6c757d;
+      color: white;
+    }
+    .btn-next {
+      background-color: #28a745;
+      color: white;
+    }
+    .btn-back:hover {
+      background-color: #5a6268;
+    }
+    .btn-next:hover {
+      background-color: #1e7e34;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h2>Form Data Transaksi</h2>
+
+  <form action="hasil.html" method="GET">
+    <div class="form-group">
+      <label for="nama_transaksi">Nama Transaksi</label>
+      <input type="text" id="nama_transaksi" name="nama_transaksi" required />
+    </div>
+
+    <div class="form-group">
+      <label for="dana_dikeluarkan">Dana yang Dikeluarkan</label>
+      <input type="number" id="dana_dikeluarkan" name="dana_dikeluarkan" min="0" step="1" required />
+    </div>
+
+    <div class="form-group">
+      <label for="tanggal_transaksi">Tanggal Transaksi</label>
+      <input type="date" id="tanggal_transaksi" name="tanggal_transaksi" required />
+    </div>
+
+    <!-- Tombol untuk kirim form ke halaman hasil -->
+    <button type="submit">Simpan Transaksi</button>
+  </form>
+
+  <!-- Tautan kembali ke form sebelumnya (rekening bank) -->
+  <a href="data bank form.html" class="btn-back">← Kembali ke Form Rekening Bank</a>
+
+  <!-- Tautan ke halaman selanjutnya (misal laporan/hasil) -->
+  <a href="akhir form.html" class="btn-next">Lihat Hasil Transaksi →</a>
+
+</body>
+</html>
