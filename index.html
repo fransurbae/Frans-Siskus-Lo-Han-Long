@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Utama</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+        .welcome {
+            font-size: 1.2em;
+            color: #718096;
+            margin-bottom: 40px;
+        }
+        .menu-btn {
+            display: block;
+            width: 300px;
+            margin: 20px auto;
+            padding: 15px 30px;
+            background: #48bb78;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+        .menu-btn:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .menu-btn:nth-child(3) {
+            background: #ed8936;
+        }
+        .menu-btn:nth-child(3):hover {
+            background: #dd6b20;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" role="navigation">
+        <h1>Selamat Datang di Halaman Saya!</h1>
+        <p class="welcome">Pilih menu yang ingin Anda kunjungi:</p>
+
+        <a href="biodata page.html" class="menu-btn" aria-label="Buka halaman Biodata Diri">📄 Biodata Diri</a>
+        <a href="demografi form.html" class="menu-btn" aria-label="Buka halaman Form Data">📝 Form Data</a>
+        <a href="https://forms.gle/Hy2cXb16cZkfDvXDA" class="menu-btn" target="_blank" aria-label="Buka Form Google">📊 Isi Form Google</a>
+    </div>
+</body>
+</html>
