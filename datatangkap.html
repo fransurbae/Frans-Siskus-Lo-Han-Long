@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portal KUB - Hasil Tangkapan Kelompok">
   <title>Hasil Tangkapan Kelompok</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -200,6 +201,7 @@
       border-radius:16px;
       overflow:hidden;
       background:#fff;
+      position:relative;
     }
 
     .iframe-box iframe{
@@ -207,6 +209,27 @@
       height:620px;
       border:0;
       display:block;
+    }
+
+    .form-alt-link {
+      margin-top: 12px;
+      padding: 12px 14px;
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      border-radius: 12px;
+      font-size: 13px;
+      color: #f57c00;
+      line-height: 1.6;
+    }
+
+    .form-alt-link a {
+      color: #e65100;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .form-alt-link a:hover {
+      text-decoration: underline;
     }
 
     .note{
@@ -252,6 +275,7 @@
       .sidebar.open{transform:translateX(0)}
 
       .main,
+      .main,
       .sidebar.open ~ .main,
       .sidebar:hover ~ .main{
         margin-left:0;
@@ -267,13 +291,16 @@
       .top-actions{justify-content:flex-start}
       .card{padding:16px}
       .section-title{font-size:18px}
-      .iframe-box iframe{height:480px}
+      .iframe-box iframe{height:500px}
       .pill{width:100%;justify-content:center}
+      .form-alt-link{font-size:12px}
     }
 
     @media (max-width: 480px){
       .topbar h1{font-size:18px}
-      .iframe-box iframe{height:420px}
+      .iframe-box iframe{height:450px}
+      .topbar{padding:14px}
+      .pill{padding:8px 12px;font-size:12px}
     }
   </style>
 </head>
@@ -324,13 +351,24 @@
           <div class="card">
             <h2 class="section-title">Form Pengisian Hasil Tangkapan</h2>
             <p class="section-desc">
-              Isi form berikut dengan data hasil tangkapan kelompok Anda.
+              Isi form berikut dengan data hasil tangkapan kelompok Anda. Form dapat diakses dengan **akun Google apa saja** atau tanpa login.
             </p>
+            
             <div class="iframe-box">
               <iframe
                 src="https://docs.google.com/forms/d/e/1FAIpQLScknvtP9eHayjmDEoTzU93PBTHAesfS5M4Ae_in0jt0obWBxw/viewform?usp=dialog"
-                title="Form Pengisian">
+                title="Form Pengisian"
+                loading="lazy">
               </iframe>
+            </div>
+
+            <div class="form-alt-link">
+              <i class="fa-solid fa-triangle-exclamation"></i> 
+              Jika form tidak muncul di iframe, <a href="https://docs.google.com/forms/d/e/1FAIpQLScknvtP9eHayjmDEoTzU93PBTHAesfS5M4Ae_in0jt0obWBxw/viewform" target="_blank" rel="noopener">klik di sini untuk membuka form di tab baru</a>.
+            </div>
+
+            <div class="note">
+              <strong>Tips:</strong> Jika menggunakan handphone dan form sulit diakses, klik tombol di atas untuk membuka form di tab baru. Pastikan pengaturan Google Form sudah di-set ke "Anyone can respond".
             </div>
           </div>
 
@@ -343,7 +381,8 @@
             <div class="iframe-box">
               <iframe
                 src="https://docs.google.com/spreadsheets/d/1-XJ8kST8sa4hPh1VKSqDUVfwaQej3GOEyDoI2-TQug0/edit?usp=sharing"
-                title="Spreadsheet Hasil Form Pengisian">
+                title="Spreadsheet Hasil Form Pengisian"
+                loading="lazy">
               </iframe>
             </div>
           </div>
@@ -357,7 +396,8 @@
             <div class="iframe-box">
               <iframe
                 src="https://datastudio.google.com/embed/reporting/22fc0ff3-597c-4113-a197-58f327a56013/page/page_12345"
-                title="Dashboard Looker Studio Pengisian">
+                title="Dashboard Looker Studio Pengisian"
+                loading="lazy">
               </iframe>
             </div>
           </div>
@@ -368,17 +408,28 @@
           <div class="card">
             <h2 class="section-title">Form Penilaian Hasil Tangkapan</h2>
             <p class="section-desc">
-              Isi form berikut untuk penilaian hasil tangkapan kelompok.
+              Isi form berikut untuk penilaian hasil tangkapan kelompok. Form dapat diakses dengan **akun Google apa saja**.
             </p>
+            
             <div class="iframe-box">
               <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLScZzLRtfK3fIkpcFp5jZD0Cs8HIzr7WxB69xmRA2AFO_ZmqTg/viewform?usp=dialog"
-                title="Form Penilaian">
+                src="https://docs.google.com/forms/d/e/1FAIpQLScZzLRtfK3fIkpcFp5jZD0Cs8HIzr7WxA69xmRA2AFO_ZmqTg/viewform?usp=dialog"
+                title="Form Penilaian"
+                loading="lazy">
               </iframe>
+            </div>
+
+            <div class="form-alt-link">
+              <i class="fa-solid fa-triangle-exclamation"></i> 
+              Jika form tidak muncul di iframe, <a href="https://docs.google.com/forms/d/e/1FAIpQLScZzLRtfK3fIkpcFp5jZD0Cs8HIzr7WxA69xmRA2AFO_ZmqTg/viewform" target="_blank" rel="noopener">klik di sini untuk membuka form di tab baru</a>.
+            </div>
+
+            <div class="note">
+              <strong>Tips:</strong> Jika menggunakan handphone dan form sulit diakses, klik tombol di atas untuk membuka form di tab baru. Pastikan pengaturan Google Form sudah di-set ke "Anyone can respond".
             </div>
           </div>
 
-          <!-- Spreadsheet Penilaian (BERBEDA dari Pengisian) -->
+          <!-- Spreadsheet Penilaian -->
           <div class="card">
             <h2 class="section-title">Spreadsheet Hasil Form Penilaian</h2>
             <p class="section-desc">
@@ -387,12 +438,13 @@
             <div class="iframe-box">
               <iframe
                 src="https://docs.google.com/spreadsheets/d/1wZxEh1FAxB3gRbsUhpoH-A_2fqAz7KWthJabuAWBMqM/edit?usp=sharing"
-                title="Spreadsheet Hasil Form Penilaian">
+                title="Spreadsheet Hasil Form Penilaian"
+                loading="lazy">
               </iframe>
             </div>
           </div>
 
-          <!-- Looker Studio Penilaian (BERBEDA dari Pengisian) -->
+          <!-- Looker Studio Penilaian -->
           <div class="card">
             <h2 class="section-title">Dashboard Looker Studio - Form Penilaian</h2>
             <p class="section-desc">
@@ -401,7 +453,8 @@
             <div class="iframe-box">
               <iframe
                 src="https://datastudio.google.com/embed/reporting/0bc7518a-454c-4d57-9f94-9678858e665b/page/page_12345"
-                title="Dashboard Looker Studio Penilaian">
+                title="Dashboard Looker Studio Penilaian"
+                loading="lazy">
               </iframe>
             </div>
           </div>
@@ -424,19 +477,16 @@
     }
 
     function showForm(type){
-      // Hide all forms
       document.querySelectorAll('.form-container').forEach(form => {
         form.classList.remove('active');
       });
 
-      // Show selected form
       if(type === 'pengisian'){
         document.getElementById('formPengisian').classList.add('active');
       } else if(type === 'penilaian'){
         document.getElementById('formPenilaian').classList.add('active');
       }
 
-      // Scroll to form
       setTimeout(() => {
         const activeForm = document.querySelector('.form-container.active');
         if(activeForm){
