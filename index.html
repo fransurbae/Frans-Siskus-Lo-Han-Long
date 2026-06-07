@@ -3,70 +3,306 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu Utama</title>
+    <meta name="description" content="Menu Utama - Portal Data Fisheries dan Marine Sciences" />
+    <title>Menu Utama | Portal Data Fisheries</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+            background-attachment: fixed;
             color: #333;
             line-height: 1.6;
+            padding: 20px;
         }
+
         .container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #3b82f6, #2563eb, #1e40af);
+        }
+
+        .header-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
         h1 {
-            color: #4a5568;
-            margin-bottom: 10px;
+            color: #1e3a8a;
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.2;
         }
+
         .welcome {
-            font-size: 1.2em;
-            color: #718096;
-            margin-bottom: 40px;
+            font-size: 1.15em;
+            color: #64748b;
+            margin-bottom: 50px;
+            font-weight: 500;
         }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
         .menu-btn {
-            display: block;
-            width: 300px;
-            margin: 20px auto;
-            padding: 15px 30px;
-            background: #48bb78;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 25px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: white;
             text-decoration: none;
-            border-radius: 10px;
-            font-size: 1.1em;
-            font-weight: bold;
-            transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+            border-radius: 14px;
+            font-size: 1.05em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            position: relative;
+            overflow: hidden;
         }
+
+        .menu-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-btn:hover::before {
+            opacity: 1;
+        }
+
         .menu-btn:hover {
-            background: #38a169;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+        }
+
+        .menu-btn:active {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        .menu-btn:nth-child(3) {
-            background: #ed8936;
+
+        .menu-btn .icon {
+            font-size: 1.3em;
+            width: 28px;
+            text-align: center;
         }
-        .menu-btn:nth-child(3):hover {
-            background: #dd6b20;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+        /* Button color variations */
+        .menu-btn.biodata {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+        .menu-btn.biodata:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        }
+
+        .menu-btn.form-data {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+        }
+        .menu-btn.form-data:hover {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+        }
+
+        .menu-btn.gform {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        .menu-btn.gform:hover {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+
+        .menu-btn.kepuasan {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+        .menu-btn.kepuasan:hover {
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+        }
+
+        .menu-btn.tugas {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            grid-column: span 2;
+        }
+        .menu-btn.tugas:hover {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            color: #94a3b8;
+            font-size: 0.9em;
+        }
+
+        .footer span {
+            display: inline-block;
+            margin: 0 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 25px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .welcome {
+                font-size: 1em;
+                margin-bottom: 35px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .menu-btn.tugas {
+                grid-column: span 1;
+            }
+
+            .menu-btn {
+                padding: 16px 20px;
+                font-size: 1em;
+            }
+        }
+
+        /* Animation on load */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .menu-btn {
+            animation: slideUp 0.6s ease-out;
+            animation-delay: calc(var(--delay, 0) * 0.1s);
         }
     </style>
 </head>
 <body>
     <div class="container" role="navigation">
-        <h1>Selamat Datang di Halaman Saya!</h1>
+        <h1>Selamat datang di Portal Pribadi Saya</h1>
         <p class="welcome">Pilih menu yang ingin Anda kunjungi:</p>
 
-        <a href="biodata page.html" class="menu-btn" aria-label="Buka halaman Biodata Diri">📄 Biodata Diri</a>
-        <a href="demografi form.html" class="menu-btn" aria-label="Buka halaman Form Data">📝 Form Data</a>
-        <a href="gform.html" class="menu-btn" target="_blank" aria-label="Buka Form Google">📊 Isi Form Google</a>
-        <a href="Tingkat Kepuasan.html" class="menu-btn" aria-label="Tingkat Kepuasan Pengguna">📊 Isi Form Kepuasan</a>
-        <a href="datatangkap.html" class="menu-btn" aria-label="Tugas Akhir">📊 Tugas Akhir</a>
+        <div class="menu-grid">
+            <a href="biodata page.html" 
+               class="menu-btn biodata" 
+               aria-label="Buka halaman Biodata Diri"
+               style="--delay: 1">
+                <span class="icon">📄</span>
+                <span>Biodata Diri</span>
+            </a>
+
+            <a href="demografi form.html" 
+               class="menu-btn form-data" 
+               aria-label="Buka halaman Form Data Demografi"
+               style="--delay: 2">
+                <span class="icon">📝</span>
+                <span>Form Data Demografi</span>
+            </a>
+
+            <a href="gform.html" 
+               class="menu-btn gform" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="Buka Form Google"
+               style="--delay: 3">
+                <span class="icon">🔗</span>
+                <span>Isi Form Google</span>
+            </a>
+
+            <a href="Tingkat Kepuasan.html" 
+               class="menu-btn kepuasan" 
+               aria-label="Tingkat Kepuasan Pengguna"
+               style="--delay: 4">
+                <span class="icon">⭐</span>
+                <span>Form Kepuasan</span>
+            </a>
+
+            <a href="datatangkap.html" 
+               class="menu-btn tugas" 
+               aria-label="Tugas Akhir"
+               style="--delay: 5">
+                <span class="icon">📊</span>
+                <span>Tugas Akhir - Data Tangkap</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            <span>Frans Siskus Lo Han Long</span>
+            <span>•</span>
+            <span>2026</span>
+        </div>
     </div>
+
+    <script>
+        // Add smooth click animation
+        document.querySelectorAll('.menu-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                this.style.transform = 'translateY(-1px) scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Add keyboard navigation
+        document.querySelectorAll('.menu-btn').forEach((btn, index) => {
+            btn.tabIndex = 0;
+        });
+    </script>
 </body>
 </html>
