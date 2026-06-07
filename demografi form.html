@@ -3,99 +3,454 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Form Demografi dan Transaksi</title>
+  <meta name="description" content="Form Multi Step Data Pribadi, Data Bank, dan Data Transaksi"/>
+  <title>Form Multi Step | Data Pribadi, Bank, dan Transaksi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
+      font-family: 'Inter', Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+      padding: 24px;
+      color: #1f2937;
     }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #60a5fa, #2563eb, #1e40af);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .icon {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    h1 {
+      color: #1e3a8a;
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .progress {
+      display: flex;
+      gap: 10px;
+      margin: 24px 0 32px;
+      flex-wrap: wrap;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+      padding: 12px 10px;
+      border-radius: 12px;
+      background: #e0f2fe;
+      color: #1d4ed8;
+      font-weight: 600;
+      border: 1px solid #bfdbfe;
+      transition: 0.25s ease;
+    }
+
+    .step.active {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.2);
+    }
+
+    .form-step {
+      display: none;
+      animation: fadeUp 0.35s ease;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
     .form-group {
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
+
     label {
       display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #374151;
     }
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="date"],
+
+    input,
     select,
     textarea {
       width: 100%;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      padding: 14px 16px;
+      border: 2px solid #dbeafe;
+      border-radius: 12px;
+      background: #f8fbff;
+      font-size: 1rem;
+      transition: 0.25s ease;
+      font-family: inherit;
     }
-    button {
-      padding: 10px 15px;
-      background-color: #007bff;
-      color: white;
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .btn,
+    .btn-secondary,
+    .link-btn {
       border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-right: 10px;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    a {
-      padding: 10px 15px;
+      border-radius: 12px;
+      padding: 14px 22px;
+      font-weight: 700;
+      font-size: 1rem;
       text-decoration: none;
-      background-color: #28a745;
-      color: white;
-      border-radius: 4px;
-      margin-left: 10px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
-    a:hover {
-      background-color: #1e7e34;
+
+    .btn {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: white;
+      box-shadow: 0 8px 18px rgba(14, 165, 233, 0.22);
+    }
+
+    .link-btn {
+      background: linear-gradient(135deg, #94a3b8, #64748b);
+      color: white;
+      box-shadow: 0 8px 18px rgba(100, 116, 139, 0.18);
+    }
+
+    .btn:hover,
+    .btn-secondary:hover,
+    .link-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .summary {
+      margin-top: 18px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      padding: 18px;
+      color: #1e3a8a;
+      font-weight: 500;
+      line-height: 1.7;
+    }
+
+    .note {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #64748b;
+      text-align: center;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 28px 20px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .btn,
+      .btn-secondary,
+      .link-btn {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .step {
+        min-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <h2>Form Data Pribadi - Halaman 1</h2>
-  <form action="form2.html" method="GET">
-    <div class="form-group">
-      <label for="nama">Nama Lengkap</label>
-      <input type="text" id="nama" name="nama" required />
+  <div class="container">
+    <div class="header">
+      <div class="icon">📝</div>
+      <h1>Form Multi Step</h1>
+      <div class="subtitle">Data Pribadi • Data Bank • Data Transaksi</div>
     </div>
 
-    <div class="form-group">
-      <label for="tanggal_lahir">Tanggal Lahir</label>
-      <input type="date" id="tanggal_lahir" name="tanggal_lahir" required />
+    <div class="progress" aria-label="Progress form">
+      <div class="step active" id="progress1">1. Data Pribadi</div>
+      <div class="step" id="progress2">2. Data Bank</div>
+      <div class="step" id="progress3">3. Data Transaksi</div>
     </div>
 
-    <div class="form-group">
-      <label for="alamat">Alamat Lengkap</label>
-      <textarea id="alamat" name="alamat" rows="3" required></textarea>
-    </div>
+    <form id="multiStepForm">
+      <div class="form-step active" id="step1">
+        <div class="grid">
+          <div class="form-group">
+            <label for="nama">Nama Lengkap</label>
+            <input type="text" id="nama" name="nama" required placeholder="Masukkan nama lengkap" />
+          </div>
 
-    <div class="form-group">
-      <label for="telepon">Nomor Telepon</label>
-      <input type="tel" id="telepon" name="telepon" required />
-    </div>
+          <div class="form-group">
+            <label for="tanggal_lahir">Tanggal Lahir</label>
+            <input type="date" id="tanggal_lahir" name="tanggal_lahir" required />
+          </div>
 
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required />
-    </div>
+          <div class="form-group full">
+            <label for="alamat">Alamat Lengkap</label>
+            <textarea id="alamat" name="alamat" required placeholder="Masukkan alamat lengkap"></textarea>
+          </div>
 
-    <div class="form-group">
-      <label for="pendidikan_terakhir">Pendidikan Terakhir</label>
-      <select id="pendidikan_terakhir" name="pendidikan_terakhir" required>
-        <option value="">-- Pilih --</option>
-        <option value="sd">SD / Sederajat</option>
-        <option value="smp">SMP / Sederajat</option>
-        <option value="sma">SMA / SMK / Sederajat</option>
-        <option value="d3">D3</option>
-        <option value="s1">S1</option>
-        <option value="s2">S2</option>
-        <option value="s3">S3</option>
-      </select>
-    </div>
-    <!-- Tautan (href) ke halaman selanjutnya -->
-    <a href="data bank form.html">Halaman Selanjutnya (tanpa isi form)</a>
-  </form>
+          <div class="form-group">
+            <label for="telepon">Nomor Telepon</label>
+            <input type="tel" id="telepon" name="telepon" required placeholder="Contoh: 08xxxxxxxxxx" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Contoh: nama@email.com" />
+          </div>
+
+          <div class="form-group full">
+            <label for="pendidikan_terakhir">Pendidikan Terakhir</label>
+            <select id="pendidikan_terakhir" name="pendidikan_terakhir" required>
+              <option value="">-- Pilih Pendidikan --</option>
+              <option value="sd">SD / Sederajat</option>
+              <option value="smp">SMP / Sederajat</option>
+              <option value="sma">SMA / SMK / Sederajat</option>
+              <option value="d3">D3</option>
+              <option value="s1">S1</option>
+              <option value="s2">S2</option>
+              <option value="s3">S3</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="link-btn" href="index.html">← Kembali ke Menu</a>
+          <button class="btn" type="button" onclick="nextStep(1)">Lanjut ke Data Bank →</button>
+        </div>
+      </div>
+
+      <div class="form-step" id="step2">
+        <div class="grid">
+          <div class="form-group">
+            <label for="nama_bank">Nama Bank</label>
+            <input type="text" id="nama_bank" name="nama_bank" required placeholder="Contoh: BRI, BCA, Mandiri" />
+          </div>
+
+          <div class="form-group">
+            <label for="nomor_rekening">Nomor Rekening</label>
+            <input type="text" id="nomor_rekening" name="nomor_rekening" required placeholder="Masukkan nomor rekening" />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="link-btn" type="button" onclick="prevStep(2)">← Sebelumnya</button>
+          <button class="btn" type="button" onclick="nextStep(2)">Lanjut ke Transaksi →</button>
+        </div>
+      </div>
+
+      <div class="form-step" id="step3">
+        <div class="grid">
+          <div class="form-group">
+            <label for="jenis_transaksi">Jenis Transaksi</label>
+            <select id="jenis_transaksi" name="jenis_transaksi" required>
+              <option value="">-- Pilih Jenis Transaksi --</option>
+              <option value="pengeluaran">Pengeluaran</option>
+              <option value="pemasukan">Pemasukan</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="tanggal_transaksi">Tanggal Transaksi</label>
+            <input type="date" id="tanggal_transaksi" name="tanggal_transaksi" required />
+          </div>
+
+          <div class="form-group full">
+            <label for="nama_keterangan">Nama / Keterangan Transaksi</label>
+            <input type="text" id="nama_keterangan" name="nama_keterangan" required placeholder="Contoh: Pembelian pakan, Penjualan ikan, dll." />
+          </div>
+
+          <div class="form-group full">
+            <label for="nominal">Nominal Transaksi</label>
+            <input type="number" id="nominal" name="nominal" required placeholder="Masukkan nominal transaksi" />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="link-btn" type="button" onclick="prevStep(3)">← Sebelumnya</button>
+          <button class="btn-secondary" type="submit">Simpan Data ✓</button>
+          <a class="link-btn" href="index.html">🏠 Kembali ke Homepage</a>
+        </div>
+
+        <div class="summary hidden" id="summaryBox"></div>
+      </div>
+    </form>
+
+    <div class="note">Semua data tersusun dalam satu halaman agar lebih praktis dan serasi.</div>
+  </div>
+
+  <script>
+    let currentStep = 1;
+
+    function showStep(step) {
+      document.querySelectorAll('.form-step').forEach((el, index) => {
+        el.classList.toggle('active', index + 1 === step);
+      });
+
+      document.querySelectorAll('.step').forEach((el, index) => {
+        el.classList.toggle('active', index + 1 === step);
+      });
+
+      currentStep = step;
+    }
+
+    function nextStep(step) {
+      const fields = document.querySelectorAll('#step' + step + ' [required]');
+      let valid = true;
+
+      fields.forEach(field => {
+        if (!field.value.trim()) {
+          field.style.borderColor = '#ef4444';
+          valid = false;
+        } else {
+          field.style.borderColor = '#10b981';
+        }
+      });
+
+      if (!valid) {
+        alert('Mohon lengkapi semua field pada bagian ini terlebih dahulu.');
+        return;
+      }
+
+      showStep(step + 1);
+    }
+
+    function prevStep(step) {
+      showStep(step - 1);
+    }
+
+    document.querySelectorAll('input, select, textarea').forEach(field => {
+      field.addEventListener('input', function() {
+        if (this.value.trim()) {
+          this.style.borderColor = '#10b981';
+        } else {
+          this.style.borderColor = '#dbeafe';
+        }
+      });
+    });
+
+    document.getElementById('multiStepForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const summaryBox = document.getElementById('summaryBox');
+      summaryBox.classList.remove('hidden');
+      summaryBox.innerHTML = `
+        <strong>Data berhasil disiapkan.</strong><br><br>
+        <b>Nama:</b> ${document.getElementById('nama').value}<br>
+        <b>Bank:</b> ${document.getElementById('nama_bank').value}<br>
+        <b>Jenis Transaksi:</b> ${document.getElementById('jenis_transaksi').value}<br>
+        <b>Nominal:</b> ${document.getElementById('nominal').value}
+      `;
+    });
+  </script>
 </body>
 </html>
