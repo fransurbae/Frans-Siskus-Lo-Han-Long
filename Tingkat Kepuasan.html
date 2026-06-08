@@ -1,70 +1,154 @@
 <!DOCTYPE html>
-<html lang="id" dir="ltr">
+<html lang="id">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Menu Utama - Form Pengisian Data dan Hasil Review"/>
     <title>Menu Utama</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            font-family: 'Inter', Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+            padding: 24px;
+            color: #1f2937;
             line-height: 1.6;
         }
+
         .container {
+            max-width: 800px;
+            margin: 40px auto;
             background: white;
+            border-radius: 24px;
             padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.18);
             text-align: center;
         }
+
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
         h1 {
-            color: #4a5568;
-            margin-bottom: 10px;
+            color: #1e3a8a;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
         }
+
         .welcome {
-            font-size: 1.2em;
-            color: #718096;
-            margin-bottom: 40px;
+            font-size: 1.1rem;
+            color: #64748b;
+            font-weight: 500;
+            margin-bottom: 36px;
         }
+
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
         .menu-btn {
-            display: block;
-            width: 300px;
-            margin: 20px auto;
-            padding: 15px 30px;
-            background: #48bb78;
+            width: 100%;
+            max-width: 350px;
+            padding: 18px 32px;
             color: white;
             text-decoration: none;
-            border-radius: 10px;
-            font-size: 1.1em;
-            font-weight: bold;
-            transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
-        .menu-btn:hover {
-            background: #38a169;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
         }
-        .menu-btn:nth-child(3) {
-            background: #ed8936;
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.4);
         }
-        .menu-btn:nth-child(3):hover {
-            background: #dd6b20;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.28);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(14, 165, 233, 0.35);
+        }
+
+        .btn-tertiary {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-tertiary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(99, 102, 241, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .icon {
+                font-size: 3rem;
+            }
+
+            .menu-btn {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container" role="navigation">
+    <div class="container">
+        <div class="icon">🏠</div>
         <h1>Selamat Datang di Halaman Saya!</h1>
         <p class="welcome">Pilih menu yang ingin Anda kunjungi:</p>
 
-        <a href="https://forms.gle/pZt1Fh7jj13vy98N7" class="menu-btn" aria-label="Form Pengisian">📄 Form Pengisian Data</a>
-        <a href="ResultView.xlsx" class="menu-btn" aria-label="Hasil Review">📝 Hasil Review</a>
-        <a href="index.html" class="menu-btn" aria-label="Kembali ke Homepage"> Homepage</a>
+        <div class="menu-container">
+            <a href="https://forms.gle/pZt1Fh7jj13vy98N7" class="menu-btn btn-primary">
+                📄 Form Pengisian Data
+            </a>
+            <a href="ResultView.xlsx" class="menu-btn btn-secondary">
+                📝 Hasil Review
+            </a>
+            <a href="index.html" class="menu-btn btn-tertiary">
+                Kembali ke Beranda
+            </a>
+        </div>
     </div>
 </body>
 </html>
